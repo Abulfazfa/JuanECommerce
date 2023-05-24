@@ -19,12 +19,11 @@ namespace JuanFrontToBack.Controllers
         public IActionResult Index()
         {
             HomeVM homeVM = new();
-            homeVM.Products = _appDbContext.Products.Include(p=>p.Images).ToList();
-            homeVM.Sliders = _appDbContext.Sliders.ToList();
-            homeVM.SliderContents = _appDbContext.SliderContents.ToList();
-            homeVM.Blogs = _appDbContext.Blogs.ToList();
-            homeVM.Banners = _appDbContext.Banners.ToList();
-            homeVM.Brands = _appDbContext.Brands.ToList();
+            homeVM.Products = _appDbContext.Products.Include(p=>p.Images).AsNoTracking().ToList();
+            homeVM.Sliders = _appDbContext.Sliders.Include(s=>s.SliderContent).AsNoTracking().ToList();
+            homeVM.Blogs = _appDbContext.Blogs.AsNoTracking().ToList();
+            homeVM.Banners = _appDbContext.Banners.AsNoTracking().ToList();
+            homeVM.Brands = _appDbContext.Brands.AsNoTracking().ToList();
             return View(homeVM);
         }
 

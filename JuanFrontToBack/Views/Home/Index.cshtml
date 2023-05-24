@@ -9,7 +9,7 @@
                             @foreach (var item in Model.Sliders)
                             {
                                 <!-- single slider item start -->
-                            <div class="hero-single-slide">
+                              <div class="hero-single-slide">
                                 <div class="hero-slider-item bg-img" data-bg="assets/img/slider/@item.ImgUrl">
                                     <div class="hero-slider-content slide-1">
                                         <h5 class="slide-subtitle">@item.SliderContent.Header</h5>
@@ -94,32 +94,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="product-carousel-4 mbn-50 slick-row-15 slick-arrow-style">
-                           
-                            @foreach (var item in Model.Products)
-                            {
-                                    <div class="product-item mb-50">
-                                    <div class="product-thumb">
-                                        <a href="product-details.html">
-                                            <img src="~/assets/img/product/@item.Images" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="product-content">
-                                        <h5 class="product-name">
-                                            <a href="product-details.html">@item.Name</a>
-                                        </h5>
-                                        <div class="price-box">
-                                                <span class="price-regular">$@item.Price</span>
-                                            <span class="price-old"><del>$@item.DiscountPrice</del></span>
-                                        </div>
-                                        <div class="product-action-link">
-                                            <a href="#" data-toggle="tooltip" title="Wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                            <a href="#" data-toggle="tooltip" title="Add To Cart"><i class="ion-bag"></i></a>
-                                            <a href="#" data-toggle="modal" data-target="#quick_view"> <span data-toggle="tooltip"
-                                            title="Quick View"><i class="ion-ios-eye-outline"></i></span> </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
+                    @await Component.InvokeAsync("Product");
                            
                         </div>
                     </div>
@@ -134,7 +109,8 @@
                 <div class="row no-gutters mtn-30">
                     
                     @foreach (var item in Model.Banners)
-                    {
+            {
+                
                             <div class="col-md-6">
                             <div class="img-container mt-30">
                                 <a href="product-details.html">
@@ -142,7 +118,7 @@
                                 </a>
                                 <div class="banner-text">
                                     <h5 class="banner-subtitle">@item.Title</h5>
-                                    <h3 class="banner-title">@item.Discount<br>@item.Desc</h3>
+                                        <h3 class="banner-title">@item.Discount%<br>@Html.Raw(item.Desc)</h3>
                                 </div>
                             </div>
                         </div>
@@ -167,7 +143,7 @@
                     <div class="col-xl-4 col-lg-5 col-md-5">
                         <div class="product-banner">
                             <a href="#">
-                                <img src="~/assets/img/banner/@Model.Banners[3]" alt="product banner">
+                                <img src="~/assets/img/banner/banner-3.jpg" alt="product banner">
                             </a>
                         </div>
                     </div>
@@ -180,7 +156,10 @@
                                     <div class="pro-item-small mt-30">
                                         <div class="product-thumb">
                                             <a href="product-details.html">
-                                                <img src="~/assets/img/product/@item.Images" alt="">
+                                        @foreach (var img in item.Images)
+                                        {
+                                              <img src="~/assets/img/product/@img.ImgUrl" alt="">
+                                        }
                                             </a>
                                         </div>
                                         <div class="pro-small-content">
@@ -208,7 +187,7 @@
                                     </div>
                                 </div>
                             }
-                          
+                    
                         </div>
                     </div>
                 </div>
@@ -273,7 +252,7 @@
                             {
                                     <div class="brand-item">
                                     <a href="#">
-                                        <img src="~/assets/img/@item.ImgUrl" alt="brand image">
+                                        <img src="~/assets/img/brand/@item.ImgUrl" alt="brand image">
                                     </a>
                                 </div>
                             }

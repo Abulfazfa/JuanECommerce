@@ -1,10 +1,11 @@
+using JuanFrontToBack;
 using JuanFrontToBack.DEL;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 var _config = builder.Configuration;
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.ServiceRegister();
 builder.Services.AddDbContext<AppDbContext>(option =>
 {
     option.UseSqlServer(_config.GetConnectionString("DefaultConnection"));

@@ -1,0 +1,30 @@
+﻿@model List<Product>
+@foreach (var item in Model)
+{
+                                        <div class="product-item mb-50">
+                                        <div class="product-thumb">
+                                            <a href="product-details.html">
+                @foreach (var img in item.Images)
+                {
+                                                         <img src="~/assets/img/product/@img.ImgUrl" alt="">
+                }
+
+                                            </a>
+                                        </div>
+                                        <div class="product-content">
+                                            <h5 class="product-name">
+                                                <a href="product-details.html">@item.Name</a>
+                                            </h5>
+                                            <div class="price-box">
+                                                    <span class="price-regular">$@item.Price</span>
+                                                <span class="price-old"><del>$@item.DiscountPrice</del></span>
+                                            </div>
+                                            <div class="product-action-link">
+                                                <a href="#" data-toggle="tooltip" title="Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                                <a href="#" data-toggle="tooltip" title="Add To Cart"><i class="ion-bag"></i></a>
+                                                <a href="#" data-toggle="modal" data-target="#quick_view"> <span data-toggle="tooltip"
+                                            title="Quick View"><i class="ion-ios-eye-outline"></i></span> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+}
