@@ -24,6 +24,18 @@
 	$(".offcanvas-btn").on('click', function(){
 		$("body").addClass('fix');
 		$(".offcanvas-search-inner").addClass('show')
+		$("#searchInput").on('keyup', function () {
+			$("#appendBox div").remove();
+			var search = $("#searchInput").val().trim();
+			$.ajax({
+				method: "get",
+				url: "/home/search?search="+search,
+				success: function (res) {
+					$("#appendBox").append(res);
+                }
+
+			})
+		});
 	})
 
 	$(".minicart-btn").on('click', function(){

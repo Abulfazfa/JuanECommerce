@@ -26,6 +26,15 @@ namespace JuanFrontToBack.Controllers
             homeVM.Brands = _appDbContext.Brands.AsNoTracking().ToList();
             return View(homeVM);
         }
+        public IActionResult Search(string search)
+        {
+            var products = _appDbContext.Products.Include(p=>p.Images)
+                .Where(p => p.Name.ToLower().Contains(search.ToLower()))
+                .Take(3)
+                .OrderByDescending(p => p.Id)
+                .ToList();
+            return PartialView("_SearcPartialView",products);
+        }
 
    
 
